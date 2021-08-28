@@ -7,6 +7,8 @@
 
 import SwiftUI
 import Firebase
+import CoreImage.CIFilterBuiltins
+import AVFoundation
 
 fileprivate enum ViewSettings: String {
     case email = "My Email Address"
@@ -27,50 +29,73 @@ struct SettingsView: View {
         return showBuild ? "\(versionNumber) (\(buildNumber))" : versionNumber
     }
     var body: some View {
-        NavigationView {
-            VStack {
-                List {
-                    Section {
-                        NavigationLink(destination: ChangeSettingsSubView(settings: .name).environmentObject(firebaseManager).environmentObject(userSettings)) {
-                            Image(systemName: "person.fill")
-                            Text("My username")
-                        }
-                        NavigationLink(destination: ChangeSettingsSubView(settings: .email).environmentObject(firebaseManager).environmentObject(userSettings)) {
-                            Image(systemName: "envelope")
-                            Text("My Email Address")
+        VStack {
+            List {
+                Section {
+                    NavigationLink(destination: ChangeSettingsSubView(settings: .name).environmentObject(firebaseManager).environmentObject(userSettings)) {
+                        Image(systemName: "person.fill")
+                        Text("My username")
+                    }
+                    NavigationLink(destination: ChangeSettingsSubView(settings: .email).environmentObject(firebaseManager).environmentObject(userSettings)) {
+                        Image(systemName: "envelope")
+                        Text("My Email Address")
+                    }
+                }
+                
+                Section {
+                    NavigationLink(
+                        destination: Image(uiImage: generateCode(str: userSettings.userID, type: .qr)).interpolation(.none).resizable().frame(width: 300, height: 300, alignment: .center),
+                        label: {
+                            Text("My QR Code")
+                        })
+                }
+                
+                Section {
+                    HStack {
+                        Text("Version")
+                        Spacer()
+                        Text(appVersion)
+                            .foregroundColor(.gray)
+                    }
+                    .onTapGesture {
+                        showBuild.toggle()
+                    }
+                }
+                Button(action: {
+                    firebaseManager.signOut { errorModel in
+                        if let errorModel = errorModel {
+                            self.errorModel = errorModel
+                        } else {
+                            userSettings.resetToDefault()
                         }
                     }
-                    
-                    Section {
-                        HStack {
-                            Text("Version")
-                            Spacer()
-                            Text(appVersion)
-                                .foregroundColor(.gray)
-                        }
-                        .onTapGesture {
-                            showBuild.toggle()
-                        }
-                    }
-                    Button(action: {
-                        firebaseManager.signOut { errorModel in
-                            if let errorModel = errorModel {
-                                self.errorModel = errorModel
-                            } else {
-                                userSettings.resetToDefault()
-                            }
-                        }
-                    }, label: {
-                        Text("Sign out")
-                    })
-                    .buttonStyle(BlueButton())
-                    .listRowBackground(Color(UIColor.systemGroupedBackground))
-                    .animation(.none)
-                }.listStyle(InsetGroupedListStyle())
-            }
-            .navigationBarTitle("Settings")
+                }, label: {
+                    Text("Sign out")
+                })
+                .buttonStyle(BlueButton())
+                .listRowBackground(Color(UIColor.systemGroupedBackground))
+                .animation(.none)
+            }.listStyle(InsetGroupedListStyle())
         }
-        .navigationViewStyle(StackNavigationViewStyle())
+    }
+    
+    func generateCode(str: String, type: AVMetadataObject.ObjectType) -> UIImage {
+        let context = CIContext()
+        var filter = CIFilter()
+        if type == .qr {
+            filter = CIFilter.qrCodeGenerator()
+        } else if type == .aztec {
+            filter = CIFilter.aztecCodeGenerator()
+        }
+        let data = Data(str.utf8)
+        filter.setValue(data, forKey: "inputMessage")
+        
+        if let outputImage = filter.outputImage {
+            if let cgimg = context.createCGImage(outputImage, from: outputImage.extent) {
+                return UIImage(cgImage: cgimg)
+            }
+        }
+        return UIImage(systemName: "xmark.circle") ?? UIImage()
     }
 }
 
