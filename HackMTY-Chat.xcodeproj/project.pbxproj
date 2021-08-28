@@ -3,19 +3,30 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6CAC54AA4FB79D3B10F92810 /* Pods_HackMTY_Chat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66230F026875B1E01D37193D /* Pods_HackMTY_Chat.framework */; };
 		BE6CBB4C26DACA0300A1AF19 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6CBB4B26DACA0300A1AF19 /* AppDelegate.swift */; };
 		BE6CBB4E26DACA0300A1AF19 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6CBB4D26DACA0300A1AF19 /* SceneDelegate.swift */; };
 		BE6CBB5026DACA0300A1AF19 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6CBB4F26DACA0300A1AF19 /* ContentView.swift */; };
 		BE6CBB5226DACA0400A1AF19 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE6CBB5126DACA0400A1AF19 /* Assets.xcassets */; };
 		BE6CBB5526DACA0400A1AF19 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE6CBB5426DACA0400A1AF19 /* Preview Assets.xcassets */; };
 		BE6CBB5826DACA0400A1AF19 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE6CBB5626DACA0400A1AF19 /* LaunchScreen.storyboard */; };
+		BE6CBB6026DACC1100A1AF19 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BE6CBB5F26DACC1100A1AF19 /* GoogleService-Info.plist */; };
+		BE6CBB6226DACC1F00A1AF19 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6CBB6126DACC1F00A1AF19 /* ChatView.swift */; };
+		BE6CBB6426DACCB800A1AF19 /* CustomStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6CBB6326DACCB800A1AF19 /* CustomStyles.swift */; };
+		BE6CBB6626DACCD300A1AF19 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6CBB6526DACCD300A1AF19 /* User.swift */; };
+		BE6CBB6826DACCE100A1AF19 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6CBB6726DACCE100A1AF19 /* Message.swift */; };
+		BE6CBB6A26DACCF000A1AF19 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6CBB6926DACCF000A1AF19 /* Chat.swift */; };
+		BE6CBB6C26DACD0400A1AF19 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6CBB6B26DACD0400A1AF19 /* LoginView.swift */; };
+		BE6CBB6E26DACD7700A1AF19 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6CBB6D26DACD7700A1AF19 /* MessageCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		66230F026875B1E01D37193D /* Pods_HackMTY_Chat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HackMTY_Chat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A30E0758CA63FF7A0E9151E0 /* Pods-HackMTY-Chat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HackMTY-Chat.debug.xcconfig"; path = "Target Support Files/Pods-HackMTY-Chat/Pods-HackMTY-Chat.debug.xcconfig"; sourceTree = "<group>"; };
 		BE6CBB4826DACA0300A1AF19 /* HackMTY-Chat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "HackMTY-Chat.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE6CBB4B26DACA0300A1AF19 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BE6CBB4D26DACA0300A1AF19 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -24,6 +35,15 @@
 		BE6CBB5426DACA0400A1AF19 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		BE6CBB5726DACA0400A1AF19 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BE6CBB5926DACA0400A1AF19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BE6CBB5F26DACC1100A1AF19 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		BE6CBB6126DACC1F00A1AF19 /* ChatView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
+		BE6CBB6326DACCB800A1AF19 /* CustomStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStyles.swift; sourceTree = "<group>"; };
+		BE6CBB6526DACCD300A1AF19 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		BE6CBB6726DACCE100A1AF19 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		BE6CBB6926DACCF000A1AF19 /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
+		BE6CBB6B26DACD0400A1AF19 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		BE6CBB6D26DACD7700A1AF19 /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
+		EC4CC44C62C9F261A371EF4E /* Pods-HackMTY-Chat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HackMTY-Chat.release.xcconfig"; path = "Target Support Files/Pods-HackMTY-Chat/Pods-HackMTY-Chat.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +51,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6CAC54AA4FB79D3B10F92810 /* Pods_HackMTY_Chat.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		44409030EFA1C4C298519755 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				66230F026875B1E01D37193D /* Pods_HackMTY_Chat.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		BE6CBB3F26DACA0300A1AF19 = {
 			isa = PBXGroup;
 			children = (
 				BE6CBB4A26DACA0300A1AF19 /* HackMTY-Chat */,
 				BE6CBB4926DACA0300A1AF19 /* Products */,
+				EF0DCF3E216E6FCE333DE4C2 /* Pods */,
+				44409030EFA1C4C298519755 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -59,6 +90,14 @@
 				BE6CBB4B26DACA0300A1AF19 /* AppDelegate.swift */,
 				BE6CBB4D26DACA0300A1AF19 /* SceneDelegate.swift */,
 				BE6CBB4F26DACA0300A1AF19 /* ContentView.swift */,
+				BE6CBB6B26DACD0400A1AF19 /* LoginView.swift */,
+				BE6CBB6126DACC1F00A1AF19 /* ChatView.swift */,
+				BE6CBB6D26DACD7700A1AF19 /* MessageCell.swift */,
+				BE6CBB6326DACCB800A1AF19 /* CustomStyles.swift */,
+				BE6CBB6526DACCD300A1AF19 /* User.swift */,
+				BE6CBB6926DACCF000A1AF19 /* Chat.swift */,
+				BE6CBB6726DACCE100A1AF19 /* Message.swift */,
+				BE6CBB5F26DACC1100A1AF19 /* GoogleService-Info.plist */,
 				BE6CBB5126DACA0400A1AF19 /* Assets.xcassets */,
 				BE6CBB5626DACA0400A1AF19 /* LaunchScreen.storyboard */,
 				BE6CBB5926DACA0400A1AF19 /* Info.plist */,
@@ -75,6 +114,15 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		EF0DCF3E216E6FCE333DE4C2 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A30E0758CA63FF7A0E9151E0 /* Pods-HackMTY-Chat.debug.xcconfig */,
+				EC4CC44C62C9F261A371EF4E /* Pods-HackMTY-Chat.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -82,9 +130,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BE6CBB5C26DACA0400A1AF19 /* Build configuration list for PBXNativeTarget "HackMTY-Chat" */;
 			buildPhases = (
+				CD22DB58ED917082CD9E0737 /* [CP] Check Pods Manifest.lock */,
 				BE6CBB4426DACA0300A1AF19 /* Sources */,
 				BE6CBB4526DACA0300A1AF19 /* Frameworks */,
 				BE6CBB4626DACA0300A1AF19 /* Resources */,
+				3E7CA08687FE41EF8E2CD6B2 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -133,6 +183,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BE6CBB5826DACA0400A1AF19 /* LaunchScreen.storyboard in Resources */,
+				BE6CBB6026DACC1100A1AF19 /* GoogleService-Info.plist in Resources */,
 				BE6CBB5526DACA0400A1AF19 /* Preview Assets.xcassets in Resources */,
 				BE6CBB5226DACA0400A1AF19 /* Assets.xcassets in Resources */,
 			);
@@ -140,14 +191,63 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		3E7CA08687FE41EF8E2CD6B2 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-HackMTY-Chat/Pods-HackMTY-Chat-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-HackMTY-Chat/Pods-HackMTY-Chat-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HackMTY-Chat/Pods-HackMTY-Chat-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CD22DB58ED917082CD9E0737 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-HackMTY-Chat-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		BE6CBB4426DACA0300A1AF19 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE6CBB6226DACC1F00A1AF19 /* ChatView.swift in Sources */,
+				BE6CBB6E26DACD7700A1AF19 /* MessageCell.swift in Sources */,
 				BE6CBB4C26DACA0300A1AF19 /* AppDelegate.swift in Sources */,
+				BE6CBB6626DACCD300A1AF19 /* User.swift in Sources */,
+				BE6CBB6C26DACD0400A1AF19 /* LoginView.swift in Sources */,
+				BE6CBB6426DACCB800A1AF19 /* CustomStyles.swift in Sources */,
 				BE6CBB4E26DACA0300A1AF19 /* SceneDelegate.swift in Sources */,
+				BE6CBB6A26DACCF000A1AF19 /* Chat.swift in Sources */,
 				BE6CBB5026DACA0300A1AF19 /* ContentView.swift in Sources */,
+				BE6CBB6826DACCE100A1AF19 /* Message.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,6 +383,7 @@
 		};
 		BE6CBB5D26DACA0400A1AF19 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A30E0758CA63FF7A0E9151E0 /* Pods-HackMTY-Chat.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -304,6 +405,7 @@
 		};
 		BE6CBB5E26DACA0400A1AF19 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EC4CC44C62C9F261A371EF4E /* Pods-HackMTY-Chat.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
