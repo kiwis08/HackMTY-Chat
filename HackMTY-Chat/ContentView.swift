@@ -10,141 +10,118 @@ import Firebase
 
 struct ContentView: View {
     @AppStorage("currentUserName") var currentUserName = ""
-    @State var currentUser: User = User(id: UUID().uuidString, name: "TEST", email: "NOREALEMAIL")
+    @StateObject var firebaseManager = FirebaseManager()
+    @StateObject var userData = UserData()
     @State private var chats = [Chat]()
-    @State private var showLogin = false
-    @State private var isLoggedIn = false
+    @State private var checkedAuth = false
+    @State private var loggedIn = false
+    
+    @State private var selectedTab = Tabs.chats
+    
+    @State private var errorModel: ErrorModel?
+    
+    enum Tabs: String {
+        case chats = "chats"
+        case scan = "scanner"
+        case settings = "settings"
+    }
+    
     var body: some View {
-        NavigationView {
-            List(chats) { chat in
-                NavigationLink(
-                    destination: ChatView(chat: chat, currentUser: currentUser),
-                    label: {
-                        Text(getOtherUserName(from: chat.users, currentUser: currentUser.id))
-                    })
-            }
-            .navigationBarTitle(currentUserName)
-            .navigationBarItems(trailing:
-                                    Button(action: {
-                                        logout()
-                                    }) {
-                                        Text("Sign Out")
-                                    })
-            .sheet(isPresented: $showLogin, content: {
-                LoginView()
-                    .onDisappear() {
-                        checkAuth()
+        ZStack {
+            if checkedAuth {
+                if loggedIn {
+                    TabView(selection: $selectedTab) {
+                        ChatsListView(chats: $chats)
+                            .environmentObject(firebaseManager)
+                            .environmentObject(userData)
+                            .tabItem {
+                                Image(systemName: "message.fill")
+                                Text("Chats")
+                            }
+                            .tag(Tabs.chats)
+                        SettingsView()
+                            .environmentObject(firebaseManager)
+                            .environmentObject(userData)
+                            .tabItem {
+                                Image(systemName: "gear")
+                                Text("Settings")
+                            }
+                            .tag(Tabs.settings)
                     }
-            })
-            .onAppear {
-                checkAuth()
+                } else {
+                    LoginView(errorModel: $errorModel)
+                        .environmentObject(firebaseManager)
+                        .environmentObject(userData)
+                }
             }
         }
-    }
-    func logout() {
-        do {
-            try Auth.auth().signOut()
-            let domain = Bundle.main.bundleIdentifier!
-            UserDefaults.standard.removePersistentDomain(forName: domain)
-            
-        } catch {
-            print("Error signing out: \(error.localizedDescription)")
+        .onAppear {
+            checkAuth()
         }
     }
     
+    
     func checkAuth() {
+        Auth.auth().currentUser?.reload(completion: { error in
+            guard error == nil else {
+                print(error!.localizedDescription)
+                return
+            }
+        })
         Auth.auth().addStateDidChangeListener { (auth, user) in
-            guard user == nil else {
-                showLogin = false
-                isLoggedIn = true
-                print("Running this")
-                if let current = UserDefaults.standard.object(forKey: "currentUser") as? Data {
-                    if let decodedUser = try? JSONDecoder().decode(User.self, from: current) {
-                        self.currentUser = decodedUser
-                        self.currentUserName = decodedUser.name
-                    }
-                }
-                loadChats { chats in
+            if let user = user {
+                loadUserData(uid: user.uid, email: user.email!)
+                firebaseManager.loadChats(currentUser: user.uid) { chats in
                     self.chats = chats
                 }
                 return
+            } else {
+                loggedIn = false
+                checkedAuth = true
             }
-            showLogin = true
         }
     }
     
-    func loadChats(perform: @escaping ([Chat]) -> Void) {
-        var chats: [Chat] = []
+    func loadUserData(uid: String, email: String) {
         let db = Firestore.firestore()
-        let ref = db.collection("chats")
-        let query = ref.whereField("users", arrayContains: currentUser.id)
-        query.getDocuments { (snapshot, error) in
-            guard error == nil else {
-                print(error)
+        let ref = db.collection("users").document(uid)
+        ref.getDocument { snapshot, error in
+            guard let document = snapshot else {
+                print("Error getting user document: \(error!)")
                 return
             }
-            print("Chat snapshot has: \(snapshot?.count) documents")
-            for document in snapshot!.documents {
-                let result = Result {
-                    try document.data(as: Chat.self)
-                }
-                switch result {
-                case .success(let chat):
-                    if let chat = chat {
-                        chats.append(chat)
+            
+            let result = Result {
+                try document.data(as: User.self)
+            }
+            switch result {
+            case .success(let user):
+                if let user = user {
+                    userData.userID = user.id
+                    userData.username = user.name
+                    userData.email = email
+                    if email != user.email {
+                        firebaseManager.solveEmailAddressConflict(id: user.id, email: email) { errModel in
+                            self.errorModel = errModel
+                        }
                     }
-                case .failure(let error):
-                    print(error.localizedDescription)
+                    withAnimation {
+                        loggedIn = true
+                        checkedAuth = true
+                    }
                 }
+            case .failure(let error):
+                print("Error decoding user: \(error)")
             }
-            perform(chats)
+            
         }
     }
     
-    func getName(from id: String, completion: @escaping (String) -> Void) {
-        let db = Firestore.firestore()
-        let ref = db.collection("users").document(id)
-        ref.getDocument { (snapshot, error) in
-            guard let snapshot = snapshot else {
-                print(error)
-                return
-            }
-            let name = snapshot.data()?["name"] as! String
-            completion(name)
-            //            let result = Result {
-            //                try snapshot.data(as: User.self)
-            //            }
-            //
-            //            switch result {
-            //            case .success(let user):
-            //                if let user = user {
-            //                    name = user.name
-            //                    print("Name setted")
-            //                }
-            //            case .failure(let error):
-            //                print(error)
-            //            }
-        }
-    }
     
-    func getOtherUser(from users: [String], currentUser: String) -> String {
-        var userID = ""
-        for user in users {
-            if user != currentUser {
-                userID = user
-            }
-        }
-        return userID
-    }
     
-    func getOtherUserName(from users: [String], currentUser: String) -> String {
-        var username = "Username"
-        let otherUser = getOtherUser(from: users, currentUser: currentUser)
-        getName(from: otherUser) { (name) in
-            username = name
-        }
-        return username
-    }
+    
+    
+   
 }
 
 //struct ContentView_Previews: PreviewProvider {

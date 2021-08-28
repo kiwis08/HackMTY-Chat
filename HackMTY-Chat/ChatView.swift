@@ -14,7 +14,7 @@ import FirebaseFirestoreSwift
 struct ChatView: View {
     @State var chat: Chat
     @State private var messages: [Message] = []
-    var currentUser: User
+    var currentUser: String
     @State private var messageField = ""
     var body: some View {
         VStack {
@@ -26,7 +26,7 @@ struct ChatView: View {
                         }
                     }
                     .onChange(of: messages, perform: { value in
-                        if messages.last?.sentBy == currentUser.id {
+                        if messages.last?.sentBy == currentUser {
                             withAnimation {
                                 scrollView.scrollTo(messages.last!.id, anchor: .bottom)
                             }
@@ -49,7 +49,7 @@ struct ChatView: View {
                         guard self.messageField.isEmpty == false else {
                             return
                         }
-                        let message = Message(text: messageField, sentBy: currentUser.id, date: Date())
+                        let message = Message(text: messageField, sentBy: currentUser, date: Date())
                         sendMessage(message: message, to: chat)
                         messageField = ""
                         

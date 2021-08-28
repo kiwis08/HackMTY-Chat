@@ -9,9 +9,9 @@ import SwiftUI
 
 struct MessageCell: View {
     var message: Message
-    var currentUser: User
+    var currentUser: String
     var isCurrentUser: Bool {
-        message.sentBy == currentUser.id
+        message.sentBy == currentUser
     }
     var body: some View {
         HStack {
