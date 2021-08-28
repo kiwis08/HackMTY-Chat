@@ -147,4 +147,33 @@ final class FirebaseManager: ObservableObject {
             }
         })
     }
+    
+    func joinChat(user: String, with secondUser: String, completion: @escaping (ErrorModel?) -> Void) {
+        let db = Firestore.firestore()
+        let ref = db.collection("chats")
+        let newChat = Chat(users: [user, secondUser])
+        do {
+            try ref.addDocument(from: newChat, encoder: .init()) { error in
+                if let error = error {
+                    completion(ErrorModel(message: error.localizedDescription))
+                } else {
+                    completion(nil)
+                }
+            }
+        } catch {
+            completion(ErrorModel(message: error.localizedDescription))
+        }
+    }
+    
+    func userExists(userID: String, completion: @escaping (Bool) -> Void) {
+        let db = Firestore.firestore()
+        let ref = db.collection("users").whereField("id", isEqualTo: userID)
+        ref.getDocuments { snapshot, error in
+            guard let snapshot = snapshot, snapshot.isEmpty == false else {
+                completion(false)
+                return
+            }
+            completion(true)
+        }
+    }
 }

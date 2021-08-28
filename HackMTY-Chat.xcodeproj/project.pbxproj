@@ -32,6 +32,7 @@
 		BE6CBB7E26DAE34700A1AF19 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6CBB7D26DAE34700A1AF19 /* RegistrationView.swift */; };
 		BE6CBB8026DAE76D00A1AF19 /* PasswordResetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6CBB7F26DAE76D00A1AF19 /* PasswordResetView.swift */; };
 		BE6CBB8326DAEF5500A1AF19 /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = BE6CBB8226DAEF5500A1AF19 /* CodeScanner */; };
+		BE6CBB8526DAF5BC00A1AF19 /* UserCodeScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6CBB8426DAF5BC00A1AF19 /* UserCodeScanner.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +63,7 @@
 		BE6CBB7B26DAE05F00A1AF19 /* ReauthPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReauthPasswordView.swift; sourceTree = "<group>"; };
 		BE6CBB7D26DAE34700A1AF19 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 		BE6CBB7F26DAE76D00A1AF19 /* PasswordResetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetView.swift; sourceTree = "<group>"; };
+		BE6CBB8426DAF5BC00A1AF19 /* UserCodeScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCodeScanner.swift; sourceTree = "<group>"; };
 		EC4CC44C62C9F261A371EF4E /* Pods-HackMTY-Chat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HackMTY-Chat.release.xcconfig"; path = "Target Support Files/Pods-HackMTY-Chat/Pods-HackMTY-Chat.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -118,6 +120,7 @@
 				BE6CBB7B26DAE05F00A1AF19 /* ReauthPasswordView.swift */,
 				BE6CBB7526DAD75600A1AF19 /* UserData.swift */,
 				BE6CBB7126DACFEA00A1AF19 /* FirebaseManager.swift */,
+				BE6CBB8426DAF5BC00A1AF19 /* UserCodeScanner.swift */,
 				BE6CBB6F26DACFD800A1AF19 /* ChatsListView.swift */,
 				BE6CBB6B26DACD0400A1AF19 /* LoginView.swift */,
 				BE6CBB6126DACC1F00A1AF19 /* ChatView.swift */,
@@ -289,6 +292,7 @@
 				BE6CBB5026DACA0300A1AF19 /* ContentView.swift in Sources */,
 				BE6CBB7626DAD75600A1AF19 /* UserData.swift in Sources */,
 				BE6CBB7A26DAD85A00A1AF19 /* UIApplication+AppVersion.swift in Sources */,
+				BE6CBB8526DAF5BC00A1AF19 /* UserCodeScanner.swift in Sources */,
 				BE6CBB6826DACCE100A1AF19 /* Message.swift in Sources */,
 				BE6CBB7C26DAE05F00A1AF19 /* ReauthPasswordView.swift in Sources */,
 				BE6CBB7426DAD70B00A1AF19 /* SettingsView.swift in Sources */,
