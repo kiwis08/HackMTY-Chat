@@ -9,6 +9,7 @@ import SwiftUI
 import CodeScanner
 
 struct UserCodeScanner: View {
+    @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var firebaseManager: FirebaseManager
     @EnvironmentObject var userData: UserData
     @State private var errorModel: ErrorModel? = nil
@@ -22,6 +23,8 @@ struct UserCodeScanner: View {
                         firebaseManager.joinChat(user: userData.userID, with: userID) { errModel in
                             if let errModel = errModel {
                                 errorModel = errModel
+                            } else {
+                                presentationMode.wrappedValue.dismiss()
                             }
                         }
                     case false:
