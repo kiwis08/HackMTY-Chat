@@ -6,8 +6,9 @@ target 'HackMTY-Chat' do
   use_frameworks!
 
   # Pods for HackMTY-Chat
-pod 'Firebase/Auth'
-pod 'Firebase/Firestore'
-pod 'FirebaseFirestoreSwift'
-pod 'Firebase/Analytics'
+  pod 'Firebase/Analytics', '~> 7.10.0'
+  pod 'Firebase/Auth', '~> 7.10.0'
+  pod 'Firebase/Firestore', '~> 7.10.0'
+  pod 'FirebaseFirestoreSwift', '~> 7.10.0-beta'
+
 end
