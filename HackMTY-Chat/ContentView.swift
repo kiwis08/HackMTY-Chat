@@ -30,23 +30,26 @@ struct ContentView: View {
         ZStack {
             if checkedAuth {
                 if loggedIn {
-                    TabView(selection: $selectedTab) {
-                        ChatsListView(chats: $chats)
-                            .environmentObject(firebaseManager)
-                            .environmentObject(userData)
-                            .tabItem {
-                                Image(systemName: "message.fill")
-                                Text("Chats")
-                            }
-                            .tag(Tabs.chats)
-                        SettingsView()
-                            .environmentObject(firebaseManager)
-                            .environmentObject(userData)
-                            .tabItem {
-                                Image(systemName: "gear")
-                                Text("Settings")
-                            }
-                            .tag(Tabs.settings)
+                    NavigationView {
+                        TabView(selection: $selectedTab) {
+                            ChatsListView(chats: $chats)
+                                .environmentObject(firebaseManager)
+                                .environmentObject(userData)
+                                .tabItem {
+                                    Image(systemName: "message.fill")
+                                    Text("Chats")
+                                }
+                                .tag(Tabs.chats)
+                            SettingsView()
+                                .environmentObject(firebaseManager)
+                                .environmentObject(userData)
+                                .tabItem {
+                                    Image(systemName: "gear")
+                                    Text("Settings")
+                                }
+                                .tag(Tabs.settings)
+                        }
+                        .navigationBarTitle(selectedTab == .chats ? "Chats" : "Settings")
                     }
                 } else {
                     LoginView(errorModel: $errorModel)
