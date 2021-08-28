@@ -14,7 +14,7 @@ final class FirebaseManager: ObservableObject {
         let db = Firestore.firestore()
         let ref = db.collection("chats")
         let query = ref.whereField("users", arrayContains: currentUser)
-        query.getDocuments { (snapshot, error) in
+        query.addSnapshotListener { (snapshot, error) in
             guard error == nil else {
                 print(error)
                 return
