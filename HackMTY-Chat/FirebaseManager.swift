@@ -73,13 +73,11 @@ final class FirebaseManager: ObservableObject {
         return userID
     }
     
-    func getOtherUserName(from users: [String], currentUser: String) -> String {
-        var username = "Username"
+    func getOtherUserName(from users: [String], currentUser: String, completion: @escaping (String) -> Void) {
         let otherUser = getOtherUser(from: users, currentUser: currentUser)
         getName(from: otherUser) { (name) in
-            username = name
+            completion(name)
         }
-        return username
     }
     
     func signOut(completion: (ErrorModel?) -> Void) {
