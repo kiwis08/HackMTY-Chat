@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>242037088212-v232m69k0qenqs9b5pmg8347dgbpav1d.apps.googleusercontent.com</string>
+	<string>242037088212-oh34pnediu8u0li2rpnqn57lmbucocqc.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.242037088212-v232m69k0qenqs9b5pmg8347dgbpav1d</string>
+	<string>com.googleusercontent.apps.242037088212-oh34pnediu8u0li2rpnqn57lmbucocqc</string>
 	<key>API_KEY</key>
 	<string>AIzaSyDYLOClMDLy5EOv145_EqvILbx9OTqcmdE</string>
 	<key>GCM_SENDER_ID</key>
@@ -13,7 +13,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.santiago.artests</string>
+	<string>com.myteam123.HackMTY-Chat</string>
 	<key>PROJECT_ID</key>
 	<string>hackmty-chat</string>
 	<key>STORAGE_BUCKET</key>
@@ -29,6 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:242037088212:ios:8054223ce8be72b3c64041</string>
+	<string>1:242037088212:ios:4c5010746ac894adc64041</string>
 </dict>
 </plist>
