@@ -62,6 +62,7 @@ struct LoginView: View {
                 
             }
             .buttonStyle(BlueButton())
+            .padding()
             Spacer()
             
             HStack {
@@ -88,7 +89,7 @@ struct LoginView: View {
             case .password:
                 PasswordResetView(email: email)
             case .registration:
-                RegistrationView(email: email)
+                RegistrationViews(email: email)
             }
         }
     }
