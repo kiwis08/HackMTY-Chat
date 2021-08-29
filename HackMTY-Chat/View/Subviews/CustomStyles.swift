@@ -85,6 +85,7 @@ struct LoginEmailTextField: View {
             TextField("", text: $text)
                 .textFieldStyle(LoginTextFieldStyle())
                 .textContentType(.emailAddress)
+                .disableAutocorrection(true)
         })
     }
 }
@@ -106,6 +107,27 @@ struct LoginPasswordTextField: View {
             SecureField("", text: $text)
                 .textFieldStyle(LoginTextFieldStyle())
                 .textContentType(.password)
+        })
+    }
+}
+
+struct MajorTextField: View {
+    @Environment(\.colorScheme) var colorScheme
+    var placeholder: String
+    @Binding var text: String
+    
+    var body: some View {
+        ZStack(alignment: .leading, content: {
+            if text.isEmpty {
+                Text(placeholder)
+                    .foregroundColor(colorScheme == .dark ? .gray : Color.gray.opacity(0.8))
+                    .padding(.horizontal)
+                    .padding(.horizontal)
+                    .allowsHitTesting(false)
+            }
+            TextField("", text: $text)
+                .textFieldStyle(LoginTextFieldStyle())
+                .disableAutocorrection(true)
         })
     }
 }
