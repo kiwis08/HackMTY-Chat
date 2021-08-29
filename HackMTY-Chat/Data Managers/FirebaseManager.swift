@@ -15,24 +15,31 @@ final class FirebaseManager: ObservableObject {
         let ref = db.collection("chats")
         let query = ref.whereField("users", arrayContains: currentUser)
         query.addSnapshotListener { (snapshot, error) in
-            guard error == nil else {
+            guard let snapshot = snapshot else {
                 print(error)
                 return
             }
-            print("Chat snapshot has: \(snapshot?.count) documents")
-            for document in snapshot!.documents {
-                let result = Result {
-                    try document.data(as: Chat.self)
-                }
-                switch result {
-                case .success(let chat):
-                    if let chat = chat {
-                        chats.append(chat)
+            snapshot.documentChanges.forEach({ change in
+                    let result = Result {
+                        try change.document.data(as: Chat.self)
                     }
-                case .failure(let error):
-                    print(error.localizedDescription)
-                }
-            }
+                    switch result {
+                    case .success(let chat):
+                        if let chat = chat {
+                            switch change.type {
+                            case .added:
+                                chats.append(chat)
+                            case .modified:
+                                chats.removeAll(where: { $0.id == chat.id })
+                                chats.append(chat)
+                            case .removed:
+                                chats.removeAll(where: { $0.id == chat.id })
+                            }
+                        }
+                    case .failure(let error):
+                        print(error.localizedDescription)
+                    }
+            })
             perform(chats)
         }
     }

@@ -72,20 +72,12 @@ struct ContentView: View {
                                 }
                             }
                         })
-                        .sheet(isPresented: $showCodeAddSheet, onDismiss: {
-                            firebaseManager.loadChats(currentUser: userData.userID) { chats in
-                                self.chats = chats
-                            }
-                        }, content: {
+                        .sheet(isPresented: $showCodeAddSheet, content: {
                             UserCodeScanner()
                                 .environmentObject(firebaseManager)
                                 .environmentObject(userData)
                         })
-                        .sheet(isPresented: $showAddBySchoolSheet, onDismiss: {
-                            firebaseManager.loadChats(currentUser: userData.userID) { chats in
-                                self.chats = chats
-                            }
-                        }, content: {
+                        .sheet(isPresented: $showAddBySchoolSheet, content: {
                             SchoolMembersList(school: userData.school)
                                 .environmentObject(firebaseManager)
                                 .environmentObject(userData)
