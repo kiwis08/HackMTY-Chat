@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6CAC54AA4FB79D3B10F92810 /* Pods_HackMTY_Chat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66230F026875B1E01D37193D /* Pods_HackMTY_Chat.framework */; };
+		BE19D8D726DB5FD500C27B14 /* View+if.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE19D8D626DB5FD500C27B14 /* View+if.swift */; };
 		BE6CBB4C26DACA0300A1AF19 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6CBB4B26DACA0300A1AF19 /* AppDelegate.swift */; };
 		BE6CBB4E26DACA0300A1AF19 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6CBB4D26DACA0300A1AF19 /* SceneDelegate.swift */; };
 		BE6CBB5026DACA0300A1AF19 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6CBB4F26DACA0300A1AF19 /* ContentView.swift */; };
@@ -31,14 +32,19 @@
 		BE6CBB7C26DAE05F00A1AF19 /* ReauthPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6CBB7B26DAE05F00A1AF19 /* ReauthPasswordView.swift */; };
 		BE6CBB7E26DAE34700A1AF19 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6CBB7D26DAE34700A1AF19 /* RegistrationView.swift */; };
 		BE6CBB8026DAE76D00A1AF19 /* PasswordResetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6CBB7F26DAE76D00A1AF19 /* PasswordResetView.swift */; };
-		BE6CBB8326DAEF5500A1AF19 /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = BE6CBB8226DAEF5500A1AF19 /* CodeScanner */; };
 		BE6CBB8526DAF5BC00A1AF19 /* UserCodeScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6CBB8426DAF5BC00A1AF19 /* UserCodeScanner.swift */; };
-		BE6CBB8726DB0F8B00A1AF19 /* SchoolSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6CBB8626DB0F8B00A1AF19 /* SchoolSelectionView.swift */; };
+		BE6CBB8E26DB11F200A1AF19 /* School.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6CBB8D26DB11F200A1AF19 /* School.swift */; };
+		BE6CBB9026DB218B00A1AF19 /* SchoolSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6CBB8F26DB218B00A1AF19 /* SchoolSelectionView.swift */; };
+		BE6CBB9226DB235800A1AF19 /* RegistrationViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6CBB9126DB235800A1AF19 /* RegistrationViews.swift */; };
+		BE6CBB9726DB54FD00A1AF19 /* SchoolMembersList.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6CBB9626DB54FD00A1AF19 /* SchoolMembersList.swift */; };
+		BEB7097126DB6426005565F9 /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = BEB7097026DB6426005565F9 /* CodeScanner */; };
+		BEB7097526DB7385005565F9 /* ChangeSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB7097426DB7385005565F9 /* ChangeSelectionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		66230F026875B1E01D37193D /* Pods_HackMTY_Chat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HackMTY_Chat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A30E0758CA63FF7A0E9151E0 /* Pods-HackMTY-Chat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HackMTY-Chat.debug.xcconfig"; path = "Target Support Files/Pods-HackMTY-Chat/Pods-HackMTY-Chat.debug.xcconfig"; sourceTree = "<group>"; };
+		BE19D8D626DB5FD500C27B14 /* View+if.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+if.swift"; sourceTree = "<group>"; };
 		BE6CBB4826DACA0300A1AF19 /* HackMTY-Chat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "HackMTY-Chat.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE6CBB4B26DACA0300A1AF19 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BE6CBB4D26DACA0300A1AF19 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -65,7 +71,11 @@
 		BE6CBB7D26DAE34700A1AF19 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 		BE6CBB7F26DAE76D00A1AF19 /* PasswordResetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetView.swift; sourceTree = "<group>"; };
 		BE6CBB8426DAF5BC00A1AF19 /* UserCodeScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCodeScanner.swift; sourceTree = "<group>"; };
-		BE6CBB8626DB0F8B00A1AF19 /* SchoolSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolSelectionView.swift; sourceTree = "<group>"; };
+		BE6CBB8D26DB11F200A1AF19 /* School.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = School.swift; sourceTree = "<group>"; };
+		BE6CBB8F26DB218B00A1AF19 /* SchoolSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolSelectionView.swift; sourceTree = "<group>"; };
+		BE6CBB9126DB235800A1AF19 /* RegistrationViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViews.swift; sourceTree = "<group>"; };
+		BE6CBB9626DB54FD00A1AF19 /* SchoolMembersList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolMembersList.swift; sourceTree = "<group>"; };
+		BEB7097426DB7385005565F9 /* ChangeSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeSelectionView.swift; sourceTree = "<group>"; };
 		EC4CC44C62C9F261A371EF4E /* Pods-HackMTY-Chat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HackMTY-Chat.release.xcconfig"; path = "Target Support Files/Pods-HackMTY-Chat/Pods-HackMTY-Chat.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -74,7 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BE6CBB8326DAEF5500A1AF19 /* CodeScanner in Frameworks */,
+				BEB7097126DB6426005565F9 /* CodeScanner in Frameworks */,
 				6CAC54AA4FB79D3B10F92810 /* Pods_HackMTY_Chat.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -139,9 +149,9 @@
 			children = (
 				BE6CBB7F26DAE76D00A1AF19 /* PasswordResetView.swift */,
 				BE6CBB4F26DACA0300A1AF19 /* ContentView.swift */,
+				BE6CBB9626DB54FD00A1AF19 /* SchoolMembersList.swift */,
 				BE6CBB7326DAD70B00A1AF19 /* SettingsView.swift */,
-				BE6CBB7D26DAE34700A1AF19 /* RegistrationView.swift */,
-				BE6CBB8626DB0F8B00A1AF19 /* SchoolSelectionView.swift */,
+				BE6CBB9326DB26C900A1AF19 /* Registration */,
 				BE6CBB7B26DAE05F00A1AF19 /* ReauthPasswordView.swift */,
 				BE6CBB6F26DACFD800A1AF19 /* ChatsListView.swift */,
 				BE6CBB6B26DACD0400A1AF19 /* LoginView.swift */,
@@ -168,6 +178,7 @@
 				BE6CBB6526DACCD300A1AF19 /* User.swift */,
 				BE6CBB6926DACCF000A1AF19 /* Chat.swift */,
 				BE6CBB6726DACCE100A1AF19 /* Message.swift */,
+				BE6CBB8D26DB11F200A1AF19 /* School.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -175,6 +186,7 @@
 		BE6CBB8B26DB117E00A1AF19 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				BE19D8D626DB5FD500C27B14 /* View+if.swift */,
 				BE6CBB7926DAD85A00A1AF19 /* UIApplication+AppVersion.swift */,
 			);
 			path = Extensions;
@@ -183,10 +195,21 @@
 		BE6CBB8C26DB119100A1AF19 /* Subviews */ = {
 			isa = PBXGroup;
 			children = (
+				BEB7097426DB7385005565F9 /* ChangeSelectionView.swift */,
 				BE6CBB6D26DACD7700A1AF19 /* MessageCell.swift */,
 				BE6CBB6326DACCB800A1AF19 /* CustomStyles.swift */,
 			);
 			path = Subviews;
+			sourceTree = "<group>";
+		};
+		BE6CBB9326DB26C900A1AF19 /* Registration */ = {
+			isa = PBXGroup;
+			children = (
+				BE6CBB9126DB235800A1AF19 /* RegistrationViews.swift */,
+				BE6CBB7D26DAE34700A1AF19 /* RegistrationView.swift */,
+				BE6CBB8F26DB218B00A1AF19 /* SchoolSelectionView.swift */,
+			);
+			path = Registration;
 			sourceTree = "<group>";
 		};
 		EF0DCF3E216E6FCE333DE4C2 /* Pods */ = {
@@ -217,7 +240,7 @@
 			);
 			name = "HackMTY-Chat";
 			packageProductDependencies = (
-				BE6CBB8226DAEF5500A1AF19 /* CodeScanner */,
+				BEB7097026DB6426005565F9 /* CodeScanner */,
 			);
 			productName = "HackMTY-Chat";
 			productReference = BE6CBB4826DACA0300A1AF19 /* HackMTY-Chat.app */;
@@ -247,7 +270,7 @@
 			);
 			mainGroup = BE6CBB3F26DACA0300A1AF19;
 			packageReferences = (
-				BE6CBB8126DAEF5500A1AF19 /* XCRemoteSwiftPackageReference "CodeScanner" */,
+				BEB7096F26DB6426005565F9 /* XCRemoteSwiftPackageReference "CodeScanner" */,
 			);
 			productRefGroup = BE6CBB4926DACA0300A1AF19 /* Products */;
 			projectDirPath = "";
@@ -320,6 +343,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BE6CBB8026DAE76D00A1AF19 /* PasswordResetView.swift in Sources */,
+				BE6CBB9726DB54FD00A1AF19 /* SchoolMembersList.swift in Sources */,
 				BE6CBB7826DAD83600A1AF19 /* ErrorModel.swift in Sources */,
 				BE6CBB7226DACFEA00A1AF19 /* FirebaseManager.swift in Sources */,
 				BE6CBB6226DACC1F00A1AF19 /* ChatView.swift in Sources */,
@@ -329,16 +353,20 @@
 				BE6CBB6626DACCD300A1AF19 /* User.swift in Sources */,
 				BE6CBB6C26DACD0400A1AF19 /* LoginView.swift in Sources */,
 				BE6CBB6426DACCB800A1AF19 /* CustomStyles.swift in Sources */,
-				BE6CBB8726DB0F8B00A1AF19 /* SchoolSelectionView.swift in Sources */,
 				BE6CBB4E26DACA0300A1AF19 /* SceneDelegate.swift in Sources */,
 				BE6CBB6A26DACCF000A1AF19 /* Chat.swift in Sources */,
 				BE6CBB7026DACFD800A1AF19 /* ChatsListView.swift in Sources */,
 				BE6CBB5026DACA0300A1AF19 /* ContentView.swift in Sources */,
 				BE6CBB7626DAD75600A1AF19 /* UserData.swift in Sources */,
+				BE6CBB9026DB218B00A1AF19 /* SchoolSelectionView.swift in Sources */,
 				BE6CBB7A26DAD85A00A1AF19 /* UIApplication+AppVersion.swift in Sources */,
 				BE6CBB8526DAF5BC00A1AF19 /* UserCodeScanner.swift in Sources */,
+				BEB7097526DB7385005565F9 /* ChangeSelectionView.swift in Sources */,
 				BE6CBB6826DACCE100A1AF19 /* Message.swift in Sources */,
+				BE6CBB8E26DB11F200A1AF19 /* School.swift in Sources */,
+				BE19D8D726DB5FD500C27B14 /* View+if.swift in Sources */,
 				BE6CBB7C26DAE05F00A1AF19 /* ReauthPasswordView.swift in Sources */,
+				BE6CBB9226DB235800A1AF19 /* RegistrationViews.swift in Sources */,
 				BE6CBB7426DAD70B00A1AF19 /* SettingsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -541,7 +569,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		BE6CBB8126DAEF5500A1AF19 /* XCRemoteSwiftPackageReference "CodeScanner" */ = {
+		BEB7096F26DB6426005565F9 /* XCRemoteSwiftPackageReference "CodeScanner" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/twostraws/CodeScanner.git";
 			requirement = {
@@ -552,9 +580,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		BE6CBB8226DAEF5500A1AF19 /* CodeScanner */ = {
+		BEB7097026DB6426005565F9 /* CodeScanner */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = BE6CBB8126DAEF5500A1AF19 /* XCRemoteSwiftPackageReference "CodeScanner" */;
+			package = BEB7096F26DB6426005565F9 /* XCRemoteSwiftPackageReference "CodeScanner" */;
 			productName = CodeScanner;
 		};
 /* End XCSwiftPackageProductDependency section */
