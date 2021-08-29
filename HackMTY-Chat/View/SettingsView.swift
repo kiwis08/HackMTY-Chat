@@ -7,8 +7,6 @@
 
 import SwiftUI
 import Firebase
-import CoreImage.CIFilterBuiltins
-import AVFoundation
 
 fileprivate enum ViewSettings: String {
     case email = "My Email Address"
@@ -72,7 +70,7 @@ struct SettingsView: View {
                 
                 Section {
                     NavigationLink(
-                        destination: Image(uiImage: generateCode(str: userSettings.userID, type: .qr)).interpolation(.none).resizable().frame(width: 300, height: 300, alignment: .center),
+                        destination: QRCodeViewer(userID: userSettings.userID),
                         label: {
                             Text("My QR Code")
                         })
@@ -129,25 +127,6 @@ struct SettingsView: View {
                 ImagePicker(userID: userSettings.userID, image: $image)
             })
         }
-    }
-    
-    func generateCode(str: String, type: AVMetadataObject.ObjectType) -> UIImage {
-        let context = CIContext()
-        var filter = CIFilter()
-        if type == .qr {
-            filter = CIFilter.qrCodeGenerator()
-        } else if type == .aztec {
-            filter = CIFilter.aztecCodeGenerator()
-        }
-        let data = Data(str.utf8)
-        filter.setValue(data, forKey: "inputMessage")
-        
-        if let outputImage = filter.outputImage {
-            if let cgimg = context.createCGImage(outputImage, from: outputImage.extent) {
-                return UIImage(cgImage: cgimg)
-            }
-        }
-        return UIImage(systemName: "xmark.circle") ?? UIImage()
     }
 }
 

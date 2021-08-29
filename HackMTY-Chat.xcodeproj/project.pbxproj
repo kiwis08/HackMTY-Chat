@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		6CAC54AA4FB79D3B10F92810 /* Pods_HackMTY_Chat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66230F026875B1E01D37193D /* Pods_HackMTY_Chat.framework */; };
 		BE19D8D726DB5FD500C27B14 /* View+if.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE19D8D626DB5FD500C27B14 /* View+if.swift */; };
+		BE1E57A826DBE54F007878F7 /* QRCodeViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE1E57A726DBE54F007878F7 /* QRCodeViewer.swift */; };
 		BE3932C326DBDBF9004910EA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BE3932C226DBDBF9004910EA /* GoogleService-Info.plist */; };
 		BE6CBB4C26DACA0300A1AF19 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6CBB4B26DACA0300A1AF19 /* AppDelegate.swift */; };
 		BE6CBB4E26DACA0300A1AF19 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6CBB4D26DACA0300A1AF19 /* SceneDelegate.swift */; };
@@ -47,6 +48,7 @@
 		66230F026875B1E01D37193D /* Pods_HackMTY_Chat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HackMTY_Chat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A30E0758CA63FF7A0E9151E0 /* Pods-HackMTY-Chat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HackMTY-Chat.debug.xcconfig"; path = "Target Support Files/Pods-HackMTY-Chat/Pods-HackMTY-Chat.debug.xcconfig"; sourceTree = "<group>"; };
 		BE19D8D626DB5FD500C27B14 /* View+if.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+if.swift"; sourceTree = "<group>"; };
+		BE1E57A726DBE54F007878F7 /* QRCodeViewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeViewer.swift; sourceTree = "<group>"; };
 		BE3932C226DBDBF9004910EA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BE6CBB4826DACA0300A1AF19 /* HackMTY-Chat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "HackMTY-Chat.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE6CBB4B26DACA0300A1AF19 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -199,6 +201,7 @@
 		BE6CBB8C26DB119100A1AF19 /* Subviews */ = {
 			isa = PBXGroup;
 			children = (
+				BE1E57A726DBE54F007878F7 /* QRCodeViewer.swift */,
 				BEB7097826DB9441005565F9 /* ImagePicker.swift */,
 				BEB7097626DB8E87005565F9 /* ProfilePictureView.swift */,
 				BEB7097426DB7385005565F9 /* ChangeSelectionView.swift */,
@@ -351,6 +354,7 @@
 				BE6CBB8026DAE76D00A1AF19 /* PasswordResetView.swift in Sources */,
 				BEB7097726DB8E87005565F9 /* ProfilePictureView.swift in Sources */,
 				BE6CBB9726DB54FD00A1AF19 /* SchoolMembersList.swift in Sources */,
+				BE1E57A826DBE54F007878F7 /* QRCodeViewer.swift in Sources */,
 				BE6CBB7826DAD83600A1AF19 /* ErrorModel.swift in Sources */,
 				BE6CBB7226DACFEA00A1AF19 /* FirebaseManager.swift in Sources */,
 				BE6CBB6226DACC1F00A1AF19 /* ChatView.swift in Sources */,
@@ -513,7 +517,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A30E0758CA63FF7A0E9151E0 /* Pods-HackMTY-Chat.debug.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"HackMTY-Chat/Preview Content\"";
@@ -535,7 +539,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = EC4CC44C62C9F261A371EF4E /* Pods-HackMTY-Chat.release.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"HackMTY-Chat/Preview Content\"";

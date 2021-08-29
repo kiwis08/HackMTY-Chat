@@ -27,10 +27,15 @@ struct LoginView: View {
     
     var body: some View {
         VStack {
+            Image("UNIFRIENDS")
+                .resizable()
+                .scaledToFit()
+                .frame(height: 140)
+                .padding()
             Text("Welcome back")
                 .font(.largeTitle)
-                .fontWeight(.regular)
-                .padding(.vertical, 20)
+                .fontWeight(.medium)
+                .padding(.bottom, 20)
             
             
             VStack {

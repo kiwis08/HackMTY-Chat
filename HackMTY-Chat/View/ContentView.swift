@@ -94,13 +94,15 @@ struct ContentView: View {
                                 firebaseManager.getOtherUserName(from: chat.users, currentUser: userData.userID) { name in
                                     names[chat.id!] = name
                                 }
+                                print("Added usernames")
                                 let friendUserID = firebaseManager.getOtherUser(from: chat.users, currentUser: userData.userID)
                                 firebaseManager.getProfilePicture(friendUserID)  { image, errModel in
                                     profilePictures[chat.id!] = image!
+                                    print("Added profile pictures")
                                 }
                             }
                         }, content: {
-                            SchoolMembersList(school: userData.school)
+                            SchoolMembersList(existingChats: $chats, school: userData.school)
                                 .environmentObject(firebaseManager)
                                 .environmentObject(userData)
                         })

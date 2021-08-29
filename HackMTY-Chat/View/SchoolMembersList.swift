@@ -11,6 +11,7 @@ struct SchoolMembersList: View {
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var firebaseManager: FirebaseManager
     @EnvironmentObject var userData: UserData
+    @Binding var existingChats: [Chat]
     var school: String
     @State private var students = [User]()
     @State private var errorModel: ErrorModel? = nil
@@ -103,12 +104,18 @@ struct SchoolMembersList: View {
                         if let errorModel = errModel {
                             self.errorModel = errorModel
                         } else {
-                            self.students = users
-                            for student in users {
-                                firebaseManager.getProfilePicture(student.id)  { image, errModel in
-                                    profilePictures[student.id] = image!
+                            var students = users
+                            for user in students {
+                                for chat in existingChats {
+                                    if chat.users.contains(user.id) {
+                                        students.removeAll(where: { $0.id == user.id })
+                                    }
+                                }
+                                firebaseManager.getProfilePicture(user.id) { image, errorModel in
+                                    profilePictures[user.id] = image!
                                 }
                             }
+                            self.students = students
                         }
                     }
                 }
@@ -125,8 +132,8 @@ struct SchoolMembersList: View {
     }
 }
 
-struct SchoolMembersList_Previews: PreviewProvider {
-    static var previews: some View {
-        SchoolMembersList(school: School.example.name)
-    }
-}
+//struct SchoolMembersList_Previews: PreviewProvider {
+//    static var previews: some View {
+//        SchoolMembersList(school: School.example.name)
+//    }
+//}

@@ -39,6 +39,7 @@ final class FirebaseManager: ObservableObject {
         }
     }
     
+    
     func loadChats(currentUser: String, perform: @escaping ([Chat]) -> Void) {
         var chats: [Chat] = []
         let db = Firestore.firestore()
