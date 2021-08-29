@@ -17,6 +17,8 @@ struct ContentView: View {
     @State private var loggedIn = false
     @State private var showCodeAddSheet = false
     @State private var showAddBySchoolSheet = false
+    @State private var names: [String : String] = [:]
+    @State private var profilePictures: [String : Image] = [:]
     
     @State private var selectedTab = Tabs.chats
     
@@ -34,7 +36,7 @@ struct ContentView: View {
                 if loggedIn {
                     NavigationView {
                         TabView(selection: $selectedTab) {
-                            ChatsListView(chats: $chats)
+                            ChatsListView(chats: $chats, names: $names, profilePictures: $profilePictures)
                                 .environmentObject(firebaseManager)
                                 .environmentObject(userData)
                                 .tabItem {
@@ -72,12 +74,32 @@ struct ContentView: View {
                                 }
                             }
                         })
-                        .sheet(isPresented: $showCodeAddSheet, content: {
+                        .sheet(isPresented: $showCodeAddSheet, onDismiss: {
+                            for chat in chats {
+                                firebaseManager.getOtherUserName(from: chat.users, currentUser: userData.userID) { name in
+                                    names[chat.id!] = name
+                                }
+                                let friendUserID = firebaseManager.getOtherUser(from: chat.users, currentUser: userData.userID)
+                                firebaseManager.getProfilePicture(friendUserID)  { image, errModel in
+                                    profilePictures[chat.id!] = image!
+                                }
+                            }
+                        }, content: {
                             UserCodeScanner()
                                 .environmentObject(firebaseManager)
                                 .environmentObject(userData)
                         })
-                        .sheet(isPresented: $showAddBySchoolSheet, content: {
+                        .sheet(isPresented: $showAddBySchoolSheet, onDismiss: {
+                            for chat in chats {
+                                firebaseManager.getOtherUserName(from: chat.users, currentUser: userData.userID) { name in
+                                    names[chat.id!] = name
+                                }
+                                let friendUserID = firebaseManager.getOtherUser(from: chat.users, currentUser: userData.userID)
+                                firebaseManager.getProfilePicture(friendUserID)  { image, errModel in
+                                    profilePictures[chat.id!] = image!
+                                }
+                            }
+                        }, content: {
                             SchoolMembersList(school: userData.school)
                                 .environmentObject(firebaseManager)
                                 .environmentObject(userData)

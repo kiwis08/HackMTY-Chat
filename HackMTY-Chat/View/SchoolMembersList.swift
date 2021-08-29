@@ -18,6 +18,8 @@ struct SchoolMembersList: View {
     @State private var searchBy: SearchTypes = .name
     @State private var isSearching = false
     
+    @State private var profilePictures: [String : Image] = [:]
+    
     var searchResults: [User] {
         if searchText.isEmpty {
             return students
@@ -67,9 +69,22 @@ struct SchoolMembersList: View {
                 List {
                     ForEach(searchResults) { student in
                         HStack {
-                            Text(student.name)
-                            Spacer()
-                            Text(student.major)
+                            if profilePictures[student.id] != nil {
+                                profilePictures[student.id]?
+                                    .resizable()
+                                    .clipShape(Circle())
+                                    .frame(width: 50, height: 50)
+                                    .scaledToFit()
+                            } else {
+                                ProgressView("")
+                                    .frame(width: 50, height: 50)
+                                    .progressViewStyle(CircularProgressViewStyle())
+                            }
+                            VStack(alignment: .leading) {
+                                Text(student.name)
+                                    .bold()
+                                Text(student.major)
+                            }
                         }
                         .onTapGesture {
                             firebaseManager.joinChat(user: userData.userID, with: student.id) { errModel in
@@ -89,6 +104,11 @@ struct SchoolMembersList: View {
                             self.errorModel = errorModel
                         } else {
                             self.students = users
+                            for student in users {
+                                firebaseManager.getProfilePicture(student.id)  { image, errModel in
+                                    profilePictures[student.id] = image!
+                                }
+                            }
                         }
                     }
                 }

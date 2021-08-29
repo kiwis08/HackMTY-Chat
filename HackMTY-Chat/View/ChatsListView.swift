@@ -11,21 +11,52 @@ struct ChatsListView: View {
     @EnvironmentObject var firebaseManager: FirebaseManager
     @EnvironmentObject var userData: UserData
     @Binding var chats: [Chat]
-    @State private var names: [String : String] = [:]
+    @Binding var names: [String : String]
+    @Binding var profilePictures: [String : Image]
     
     var body: some View {
-        List(chats) { chat in
-            NavigationLink(
-                destination: ChatView(chat: chat, currentUser: userData.username),
-                label: {
-                    Text(names[chat.id!] ?? "")
-                })
+        VStack {
+            if chats.isEmpty {
+                Spacer()
+                Text("Wow... such empty. Look for new friends on the top right corner!")
+                    .font(.system(size: 32))
+                    .bold()
+                    .multilineTextAlignment(.center)
+                    .padding()
+                Spacer()
+                Spacer()
+            } else {
+                List(chats) { chat in
+                    NavigationLink(
+                        destination: ChatView(chat: chat, currentUser: userData.username, otherUser: $names[chat.id!]),
+                        label: {
+                            HStack {
+                                if profilePictures[chat.id!] != nil {
+                                    profilePictures[chat.id!]?
+                                        .resizable()
+                                        .clipShape(Circle())
+                                        .frame(width: 50, height: 50)
+                                        .scaledToFit()
+                                } else {
+                                    ProgressView("")
+                                        .frame(width: 50, height: 50)
+                                        .progressViewStyle(CircularProgressViewStyle())
+                                }
+                                Text(names[chat.id!] ?? "")
+                            }
+                        })
+                }
+                .listStyle(InsetGroupedListStyle())
+            }
         }
-        .listStyle(InsetGroupedListStyle())
         .onAppear {
             for chat in chats {
                 firebaseManager.getOtherUserName(from: chat.users, currentUser: userData.userID) { name in
                     names[chat.id!] = name
+                }
+                let friendUserID = firebaseManager.getOtherUser(from: chat.users, currentUser: userData.userID)
+                firebaseManager.getProfilePicture(friendUserID)  { image, errModel in
+                    profilePictures[chat.id!] = image!
                 }
             }
         }
