@@ -33,6 +33,7 @@
 		BE6CBB8026DAE76D00A1AF19 /* PasswordResetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6CBB7F26DAE76D00A1AF19 /* PasswordResetView.swift */; };
 		BE6CBB8326DAEF5500A1AF19 /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = BE6CBB8226DAEF5500A1AF19 /* CodeScanner */; };
 		BE6CBB8526DAF5BC00A1AF19 /* UserCodeScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6CBB8426DAF5BC00A1AF19 /* UserCodeScanner.swift */; };
+		BE6CBB8726DB0F8B00A1AF19 /* SchoolSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6CBB8626DB0F8B00A1AF19 /* SchoolSelectionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +65,7 @@
 		BE6CBB7D26DAE34700A1AF19 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 		BE6CBB7F26DAE76D00A1AF19 /* PasswordResetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetView.swift; sourceTree = "<group>"; };
 		BE6CBB8426DAF5BC00A1AF19 /* UserCodeScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCodeScanner.swift; sourceTree = "<group>"; };
+		BE6CBB8626DB0F8B00A1AF19 /* SchoolSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolSelectionView.swift; sourceTree = "<group>"; };
 		EC4CC44C62C9F261A371EF4E /* Pods-HackMTY-Chat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HackMTY-Chat.release.xcconfig"; path = "Target Support Files/Pods-HackMTY-Chat/Pods-HackMTY-Chat.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -109,26 +111,12 @@
 		BE6CBB4A26DACA0300A1AF19 /* HackMTY-Chat */ = {
 			isa = PBXGroup;
 			children = (
-				BE6CBB7F26DAE76D00A1AF19 /* PasswordResetView.swift */,
-				BE6CBB7926DAD85A00A1AF19 /* UIApplication+AppVersion.swift */,
-				BE6CBB7726DAD83600A1AF19 /* ErrorModel.swift */,
 				BE6CBB4B26DACA0300A1AF19 /* AppDelegate.swift */,
+				BE6CBB8826DB0FB000A1AF19 /* View */,
+				BE6CBB8B26DB117E00A1AF19 /* Extensions */,
+				BE6CBB8A26DB117600A1AF19 /* Models */,
 				BE6CBB4D26DACA0300A1AF19 /* SceneDelegate.swift */,
-				BE6CBB4F26DACA0300A1AF19 /* ContentView.swift */,
-				BE6CBB7326DAD70B00A1AF19 /* SettingsView.swift */,
-				BE6CBB7D26DAE34700A1AF19 /* RegistrationView.swift */,
-				BE6CBB7B26DAE05F00A1AF19 /* ReauthPasswordView.swift */,
-				BE6CBB7526DAD75600A1AF19 /* UserData.swift */,
-				BE6CBB7126DACFEA00A1AF19 /* FirebaseManager.swift */,
-				BE6CBB8426DAF5BC00A1AF19 /* UserCodeScanner.swift */,
-				BE6CBB6F26DACFD800A1AF19 /* ChatsListView.swift */,
-				BE6CBB6B26DACD0400A1AF19 /* LoginView.swift */,
-				BE6CBB6126DACC1F00A1AF19 /* ChatView.swift */,
-				BE6CBB6D26DACD7700A1AF19 /* MessageCell.swift */,
-				BE6CBB6326DACCB800A1AF19 /* CustomStyles.swift */,
-				BE6CBB6526DACCD300A1AF19 /* User.swift */,
-				BE6CBB6926DACCF000A1AF19 /* Chat.swift */,
-				BE6CBB6726DACCE100A1AF19 /* Message.swift */,
+				BE6CBB8926DB116200A1AF19 /* Data Managers */,
 				BE6CBB5F26DACC1100A1AF19 /* GoogleService-Info.plist */,
 				BE6CBB5126DACA0400A1AF19 /* Assets.xcassets */,
 				BE6CBB5626DACA0400A1AF19 /* LaunchScreen.storyboard */,
@@ -144,6 +132,61 @@
 				BE6CBB5426DACA0400A1AF19 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		BE6CBB8826DB0FB000A1AF19 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				BE6CBB7F26DAE76D00A1AF19 /* PasswordResetView.swift */,
+				BE6CBB4F26DACA0300A1AF19 /* ContentView.swift */,
+				BE6CBB7326DAD70B00A1AF19 /* SettingsView.swift */,
+				BE6CBB7D26DAE34700A1AF19 /* RegistrationView.swift */,
+				BE6CBB8626DB0F8B00A1AF19 /* SchoolSelectionView.swift */,
+				BE6CBB7B26DAE05F00A1AF19 /* ReauthPasswordView.swift */,
+				BE6CBB6F26DACFD800A1AF19 /* ChatsListView.swift */,
+				BE6CBB6B26DACD0400A1AF19 /* LoginView.swift */,
+				BE6CBB6126DACC1F00A1AF19 /* ChatView.swift */,
+				BE6CBB8426DAF5BC00A1AF19 /* UserCodeScanner.swift */,
+				BE6CBB8C26DB119100A1AF19 /* Subviews */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		BE6CBB8926DB116200A1AF19 /* Data Managers */ = {
+			isa = PBXGroup;
+			children = (
+				BE6CBB7526DAD75600A1AF19 /* UserData.swift */,
+				BE6CBB7126DACFEA00A1AF19 /* FirebaseManager.swift */,
+			);
+			path = "Data Managers";
+			sourceTree = "<group>";
+		};
+		BE6CBB8A26DB117600A1AF19 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				BE6CBB7726DAD83600A1AF19 /* ErrorModel.swift */,
+				BE6CBB6526DACCD300A1AF19 /* User.swift */,
+				BE6CBB6926DACCF000A1AF19 /* Chat.swift */,
+				BE6CBB6726DACCE100A1AF19 /* Message.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		BE6CBB8B26DB117E00A1AF19 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				BE6CBB7926DAD85A00A1AF19 /* UIApplication+AppVersion.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		BE6CBB8C26DB119100A1AF19 /* Subviews */ = {
+			isa = PBXGroup;
+			children = (
+				BE6CBB6D26DACD7700A1AF19 /* MessageCell.swift */,
+				BE6CBB6326DACCB800A1AF19 /* CustomStyles.swift */,
+			);
+			path = Subviews;
 			sourceTree = "<group>";
 		};
 		EF0DCF3E216E6FCE333DE4C2 /* Pods */ = {
@@ -286,6 +329,7 @@
 				BE6CBB6626DACCD300A1AF19 /* User.swift in Sources */,
 				BE6CBB6C26DACD0400A1AF19 /* LoginView.swift in Sources */,
 				BE6CBB6426DACCB800A1AF19 /* CustomStyles.swift in Sources */,
+				BE6CBB8726DB0F8B00A1AF19 /* SchoolSelectionView.swift in Sources */,
 				BE6CBB4E26DACA0300A1AF19 /* SceneDelegate.swift in Sources */,
 				BE6CBB6A26DACCF000A1AF19 /* Chat.swift in Sources */,
 				BE6CBB7026DACFD800A1AF19 /* ChatsListView.swift in Sources */,

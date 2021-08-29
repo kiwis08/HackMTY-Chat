@@ -22,6 +22,7 @@ struct ChatsListView: View {
                     Text(names[chat.id!] ?? "")
                 })
         }
+        .listStyle(InsetGroupedListStyle())
         .onAppear {
             for chat in chats {
                 firebaseManager.getOtherUserName(from: chat.users, currentUser: userData.userID) { name in
