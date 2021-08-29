@@ -11,8 +11,7 @@ struct ChatsListView: View {
     @EnvironmentObject var firebaseManager: FirebaseManager
     @EnvironmentObject var userData: UserData
     @Binding var chats: [Chat]
-    @State private var showAddSheet = false
-    @State private var names: [String: String] = [:]
+    @State private var names: [String : String] = [:]
     
     var body: some View {
         List(chats) { chat in
@@ -30,18 +29,6 @@ struct ChatsListView: View {
                 }
             }
         }
-        .toolbar(content: {
-            ToolbarItem(placement: .navigationBarTrailing) {
-                Button(action: {
-                    showAddSheet = true
-                }, label: {
-                    Image(systemName: "person.fill.badge.plus")
-                })
-            }
-        })
-        .sheet(isPresented: $showAddSheet, content: {
-            UserCodeScanner()
-        })
     }
 }
 
