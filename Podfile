@@ -10,5 +10,6 @@ target 'HackMTY-Chat' do
   pod 'Firebase/Auth', '~> 7.10.0'
   pod 'Firebase/Firestore', '~> 7.10.0'
   pod 'FirebaseFirestoreSwift', '~> 7.10.0-beta'
-
+  pod 'Firebase/Storage'
+  
 end
