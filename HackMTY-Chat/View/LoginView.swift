@@ -28,8 +28,9 @@ struct LoginView: View {
     var body: some View {
         VStack {
             Text("Welcome back")
-                .font(.title2)
+                .font(.largeTitle)
                 .fontWeight(.regular)
+                .padding(.vertical, 20)
             
             
             VStack {
