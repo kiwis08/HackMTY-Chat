@@ -6,8 +6,38 @@
 //
 
 import Firebase
+import SwiftUI
+import UIKit
 
 final class FirebaseManager: ObservableObject {
+    
+    func getProfilePicture(_ user: String, completion: @escaping (Image?, ErrorModel?) -> Void) {
+        let storage = Storage.storage()
+        let ref = storage.reference(withPath: "Profile pictures")
+        
+        ref.child(user).getData(maxSize: 1 * 1024 * 1024) { data, error in
+            if let error = error {
+                print(error.localizedDescription)
+                ref.child("default.jpg").getData(maxSize: 1 * 1024 * 1024) { data, error in
+                    let uiimage = UIImage(data: data!)
+                    if let uiimage = uiimage {
+                        let image = Image(uiImage: uiimage)
+                        completion(image, nil)
+                    } else {
+                        completion(nil, ErrorModel(message: "Couldn't get image from data"))
+                    }
+                }
+            } else {
+                let uiimage = UIImage(data: data!)
+                if let uiimage = uiimage {
+                    let image = Image(uiImage: uiimage)
+                    completion(image, nil)
+                } else {
+                    completion(nil, ErrorModel(message: "Couldn't get image from data"))
+                }
+            }
+        }
+    }
     
     func loadChats(currentUser: String, perform: @escaping ([Chat]) -> Void) {
         var chats: [Chat] = []

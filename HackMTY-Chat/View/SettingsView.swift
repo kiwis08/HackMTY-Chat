@@ -26,6 +26,10 @@ struct SettingsView: View {
     
     @State private var errorModel: ErrorModel? = nil
     
+    @State private var image = Image("")
+    
+    @State private var showImagePicker = false
+    
     var appVersion: String {
         guard let versionNumber = UIApplication.appVersionNumber, let buildNumber = UIApplication.appBuildNumber else { return "" }
         return showBuild ? "\(versionNumber) (\(buildNumber))" : versionNumber
@@ -34,6 +38,21 @@ struct SettingsView: View {
     var body: some View {
         VStack {
             List {
+                Section {
+                    VStack {
+                        HStack {
+                            Spacer()
+                            ProfilePictureView(image: image)
+                                .onTapGesture {
+                                    showImagePicker = true
+                                }
+                            Spacer()
+                        }
+                        Text(userSettings.username)
+                            .font(.largeTitle)
+                    }
+                }.listRowBackground(Color(UIColor.systemGroupedBackground))
+                
                 Section {
                     NavigationLink(destination: ChangeSettingsSubView(settings: .name).environmentObject(firebaseManager).environmentObject(userSettings)) {
                         Image(systemName: "person.fill")
@@ -102,7 +121,13 @@ struct SettingsView: View {
                     self.available = available
                     self.errorModel = errorModel
                 }
+                firebaseManager.getProfilePicture(userSettings.userID) { image, errModel in
+                    self.image = image!
+                }
             }
+            .sheet(isPresented: $showImagePicker, content: {
+                ImagePicker(userID: userSettings.userID, image: $image)
+            })
         }
     }
     

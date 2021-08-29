@@ -39,6 +39,8 @@
 		BE6CBB9726DB54FD00A1AF19 /* SchoolMembersList.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6CBB9626DB54FD00A1AF19 /* SchoolMembersList.swift */; };
 		BEB7097126DB6426005565F9 /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = BEB7097026DB6426005565F9 /* CodeScanner */; };
 		BEB7097526DB7385005565F9 /* ChangeSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB7097426DB7385005565F9 /* ChangeSelectionView.swift */; };
+		BEB7097726DB8E87005565F9 /* ProfilePictureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB7097626DB8E87005565F9 /* ProfilePictureView.swift */; };
+		BEB7097926DB9441005565F9 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB7097826DB9441005565F9 /* ImagePicker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -76,6 +78,8 @@
 		BE6CBB9126DB235800A1AF19 /* RegistrationViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViews.swift; sourceTree = "<group>"; };
 		BE6CBB9626DB54FD00A1AF19 /* SchoolMembersList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolMembersList.swift; sourceTree = "<group>"; };
 		BEB7097426DB7385005565F9 /* ChangeSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeSelectionView.swift; sourceTree = "<group>"; };
+		BEB7097626DB8E87005565F9 /* ProfilePictureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePictureView.swift; sourceTree = "<group>"; };
+		BEB7097826DB9441005565F9 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		EC4CC44C62C9F261A371EF4E /* Pods-HackMTY-Chat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HackMTY-Chat.release.xcconfig"; path = "Target Support Files/Pods-HackMTY-Chat/Pods-HackMTY-Chat.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -195,6 +199,8 @@
 		BE6CBB8C26DB119100A1AF19 /* Subviews */ = {
 			isa = PBXGroup;
 			children = (
+				BEB7097826DB9441005565F9 /* ImagePicker.swift */,
+				BEB7097626DB8E87005565F9 /* ProfilePictureView.swift */,
 				BEB7097426DB7385005565F9 /* ChangeSelectionView.swift */,
 				BE6CBB6D26DACD7700A1AF19 /* MessageCell.swift */,
 				BE6CBB6326DACCB800A1AF19 /* CustomStyles.swift */,
@@ -343,6 +349,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BE6CBB8026DAE76D00A1AF19 /* PasswordResetView.swift in Sources */,
+				BEB7097726DB8E87005565F9 /* ProfilePictureView.swift in Sources */,
 				BE6CBB9726DB54FD00A1AF19 /* SchoolMembersList.swift in Sources */,
 				BE6CBB7826DAD83600A1AF19 /* ErrorModel.swift in Sources */,
 				BE6CBB7226DACFEA00A1AF19 /* FirebaseManager.swift in Sources */,
@@ -358,6 +365,7 @@
 				BE6CBB7026DACFD800A1AF19 /* ChatsListView.swift in Sources */,
 				BE6CBB5026DACA0300A1AF19 /* ContentView.swift in Sources */,
 				BE6CBB7626DAD75600A1AF19 /* UserData.swift in Sources */,
+				BEB7097926DB9441005565F9 /* ImagePicker.swift in Sources */,
 				BE6CBB9026DB218B00A1AF19 /* SchoolSelectionView.swift in Sources */,
 				BE6CBB7A26DAD85A00A1AF19 /* UIApplication+AppVersion.swift in Sources */,
 				BE6CBB8526DAF5BC00A1AF19 /* UserCodeScanner.swift in Sources */,
