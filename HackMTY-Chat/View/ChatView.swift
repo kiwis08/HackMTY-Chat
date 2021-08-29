@@ -15,6 +15,7 @@ struct ChatView: View {
     @State var chat: Chat
     @State private var messages: [Message] = []
     var currentUser: String
+    @Binding var otherUser: String?
     @State private var messageField = ""
     var body: some View {
         VStack {
@@ -60,7 +61,7 @@ struct ChatView: View {
             }
             .padding()
         }
-        .navigationBarTitle(Text("Username"), displayMode: .inline)
+        .navigationBarTitle(Text(otherUser ?? "Username"), displayMode: .inline)
         .onAppear() {
             loadMessages()
         }
