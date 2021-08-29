@@ -174,4 +174,76 @@ final class FirebaseManager: ObservableObject {
             completion(true)
         }
     }
+    
+    func searchBySchool(currentUser: String, school schoolName: String, completion: @escaping ([User], ErrorModel?) -> Void) {
+        let db = Firestore.firestore()
+        let ref = db.collection("users").whereField("school.name", isEqualTo: schoolName).whereField("available", isEqualTo: true)
+        var students = [User]()
+        ref.getDocuments { snapshot, error in
+            guard let snapshot = snapshot else {
+                print(error?.localizedDescription)
+                completion([], ErrorModel(message: error!.localizedDescription))
+                return
+            }
+            guard snapshot.isEmpty == false else {
+                completion([], nil)
+                return
+            }
+            for document in snapshot.documents {
+                let result = Result {
+                    try document.data(as: User.self)
+                }
+                switch result {
+                case .success(let user):
+                    if let user = user {
+                        students.append(user)
+                    }
+                case .failure(let error):
+                    print(error)
+                }
+            }
+            students.removeAll(where: { $0.id == currentUser})
+            completion(students, nil)
+        }
+    }
+    
+    func changeVisibility(_ user: String, available: Bool, completion: @escaping (ErrorModel?) -> Void) {
+        let db = Firestore.firestore()
+        let ref = db.collection("users").document(user)
+        ref.setData(["available": available], merge: true) { error in
+            if let error = error {
+                completion(ErrorModel(message: error.localizedDescription))
+            } else {
+                completion(nil)
+            }
+        }
+    }
+    
+    func getVisibility(_ user: String, completion: @escaping (Bool, ErrorModel?) -> Void) {
+        let db = Firestore.firestore()
+        let ref = db.collection("users").document(user)
+        ref.getDocument { snap, error in
+            if let snap = snap {
+                if let available = snap.data()?["available"] as? Bool {
+                    completion(available, nil)
+                } else {
+                    completion(false, ErrorModel(message: "Unexpected error."))
+                }
+            } else {
+                completion(false, ErrorModel(message: "Unexpected error."))
+            }
+        }
+    }
+    
+    func changeSchool(_ user: String, to newSchool: School, completion: @escaping (ErrorModel?) -> Void) {
+        let db = Firestore.firestore()
+        let ref = db.collection("users").document(user)
+        ref.setData(["school" : newSchool], merge: true)
+    }
+    
+    func changeMajor(_ user: String, to newMajor: String, completion: @escaping (ErrorModel?) -> Void) {
+        let db = Firestore.firestore()
+        let ref = db.collection("users").document(user)
+        ref.setData(["major" : newMajor], merge: true)
+    }
 }
