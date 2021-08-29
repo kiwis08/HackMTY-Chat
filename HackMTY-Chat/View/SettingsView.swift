@@ -20,14 +20,17 @@ struct SettingsView: View {
     @EnvironmentObject var firebaseManager: FirebaseManager
     @EnvironmentObject var userSettings: UserData
     
+    @State private var available = true
+    
     @State private var showBuild = false
     
     @State private var errorModel: ErrorModel? = nil
     
     var appVersion: String {
-        guard let versionNumber = UIApplication.appVersionNumber, let buildNumber = UIApplication.appBuildNumber else { return ""}
+        guard let versionNumber = UIApplication.appVersionNumber, let buildNumber = UIApplication.appBuildNumber else { return "" }
         return showBuild ? "\(versionNumber) (\(buildNumber))" : versionNumber
     }
+    
     var body: some View {
         VStack {
             List {
@@ -40,6 +43,12 @@ struct SettingsView: View {
                         Image(systemName: "envelope")
                         Text("My Email Address")
                     }
+                    NavigationLink(
+                        destination: ChangeSelectionView(userID: userSettings.userID, country: userSettings.country, email: userSettings.email, major: userSettings.major),
+                        label: {
+                            Image(systemName: "studentdesk")
+                            Text("My School and Major")
+                        })
                 }
                 
                 Section {
@@ -48,6 +57,12 @@ struct SettingsView: View {
                         label: {
                             Text("My QR Code")
                         })
+                }
+                
+                Section {
+                    Toggle(isOn: $available, label: {
+                        Text("Visible to others")
+                    })
                 }
                 
                 Section {
@@ -75,7 +90,19 @@ struct SettingsView: View {
                 .buttonStyle(BlueButton())
                 .listRowBackground(Color(UIColor.systemGroupedBackground))
                 .animation(.none)
-            }.listStyle(InsetGroupedListStyle())
+            }
+            .listStyle(InsetGroupedListStyle())
+            .onChange(of: available, perform: { value in
+                firebaseManager.changeVisibility(userSettings.userID, available: value) { errorModel in
+                    self.errorModel = errorModel
+                }
+            })
+            .onAppear {
+                firebaseManager.getVisibility(userSettings.userID) { available, errorModel in
+                    self.available = available
+                    self.errorModel = errorModel
+                }
+            }
         }
     }
     
