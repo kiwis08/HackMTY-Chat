@@ -15,6 +15,8 @@ struct ContentView: View {
     @State private var chats = [Chat]()
     @State private var checkedAuth = false
     @State private var loggedIn = false
+    @State private var showCodeAddSheet = false
+    @State private var showAddBySchoolSheet = false
     
     @State private var selectedTab = Tabs.chats
     
@@ -50,7 +52,46 @@ struct ContentView: View {
                                 .tag(Tabs.settings)
                         }
                         .navigationBarTitle(selectedTab == .chats ? "Chats" : "Settings")
+                        .toolbar(content: {
+                            ToolbarItem(placement: .navigationBarTrailing) {
+                                if selectedTab == .chats {
+                                    Menu {
+                                        Button(action: {
+                                            showCodeAddSheet = true
+                                        }, label: {
+                                            Label("Scan QR code", systemImage: "qrcode.viewfinder")
+                                        })
+                                        Button(action: {
+                                            showAddBySchoolSheet = true
+                                        }, label: {
+                                            Label("Search school", systemImage: "magnifyingglass")
+                                        })
+                                    } label: {
+                                        Text("Looking for a friend?")
+                                    }
+                                }
+                            }
+                        })
+                        .sheet(isPresented: $showCodeAddSheet, onDismiss: {
+                            firebaseManager.loadChats(currentUser: userData.userID) { chats in
+                                self.chats = chats
+                            }
+                        }, content: {
+                            UserCodeScanner()
+                                .environmentObject(firebaseManager)
+                                .environmentObject(userData)
+                        })
+                        .sheet(isPresented: $showAddBySchoolSheet, onDismiss: {
+                            firebaseManager.loadChats(currentUser: userData.userID) { chats in
+                                self.chats = chats
+                            }
+                        }, content: {
+                            SchoolMembersList(school: userData.school)
+                                .environmentObject(firebaseManager)
+                                .environmentObject(userData)
+                        })
                     }
+                    .navigationViewStyle(StackNavigationViewStyle())
                 } else {
                     LoginView(errorModel: $errorModel)
                         .environmentObject(firebaseManager)
@@ -103,6 +144,9 @@ struct ContentView: View {
                     userData.userID = user.id
                     userData.username = user.name
                     userData.email = email
+                    userData.school = user.school.name
+                    userData.country = user.country
+                    userData.major = user.major
                     if email != user.email {
                         firebaseManager.solveEmailAddressConflict(id: user.id, email: email) { errModel in
                             self.errorModel = errModel
