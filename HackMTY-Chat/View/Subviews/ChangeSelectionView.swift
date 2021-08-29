@@ -20,7 +20,7 @@ struct ChangeSelectionView: View {
     @State private var errorModel: ErrorModel? = nil
     
     var body: some View {
-        VStack {
+        VStack(spacing: 15) {
             Text("Select your school")
                 .font(.largeTitle)
                 .fontWeight(.semibold)
@@ -30,12 +30,15 @@ struct ChangeSelectionView: View {
             Picker(selectedSchool.name, selection: $selectedSchool) {
                 ForEach(schools, id: \.name) {
                     Text($0.name)
+                        .multilineTextAlignment(.center)
                         .tag($0)
                 }
             }
-            .frame(maxWidth: .infinity)
+            .padding()
+            .background(Color.gray.opacity(0.6))
+            .cornerRadius(10)
             .pickerStyle(MenuPickerStyle())
-            .padding(.vertical)
+            .padding(.horizontal)
             
             MajorTextField(placeholder: "What's your major?", text: $major)
             

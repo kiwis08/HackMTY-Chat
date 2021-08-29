@@ -39,6 +39,11 @@ struct SchoolSelectionView: View {
                         .tag(school)
                 }
             }
+            .padding()
+            .background(Color.gray.opacity(0.6))
+            .cornerRadius(10)
+            .pickerStyle(MenuPickerStyle())
+            .padding(.horizontal)
             
             MajorTextField(placeholder: "What's your major?", text: $major)
             

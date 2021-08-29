@@ -40,7 +40,12 @@ struct RegistrationView: View {
                     Text(country)
                 }
             }
+            .padding()
+            .background(Color.gray.opacity(0.6))
+            .cornerRadius(10)
             .pickerStyle(MenuPickerStyle())
+            .padding(.horizontal)
+            
             if countries.contains(country) {
                 
                 LoginNameTextField(placeholder: "Username", text: $username)
